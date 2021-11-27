@@ -1,8 +1,7 @@
-
-
 //Set variables for input
 let noOfElements = document.querySelector("input[name = elements]");
 
+//Main Event of Sumbiting our form and starting the game
 document.querySelectorAll("form")[0].onsubmit = function (e) {
     
     //Preventing default of sumbiting button
@@ -17,9 +16,14 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
 
     //Deleting All Previous created divs and sections
     document.querySelectorAll("[class = box]").forEach((s) => s.remove());
-
+    
+    //declaring array outside the next loop to use later in game processing at line 117
+    let imageName = []
+    
+    //Main Loop for creating all elements and images inside them
     for (let i = 1; i <= (noOfElements.value / 2); i++) {
 
+        //Secondary Loop for creating image two times
         for(let j = 0; j<2;j++){
         
             //Creating main element
@@ -39,15 +43,6 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
             //Appending to base Element
             baseElement.append(rotatingImageContainer)
 
-            //event of rotating
-            rotatingImageContainer.onmouseover = function(){
-                rotatingImageContainer.style.setProperty("transform","rotatey(180deg)")
-            }
-            rotatingImageContainer.onmouseout = function(){
-                rotatingImageContainer.style.setProperty("transform","rotatey(360deg)")
-            }
-
-
             /******************************************************/
             
             // creating Front unknown div
@@ -58,6 +53,8 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
 
             // creating Front Image
             let createdBackImage = document.createElement("img");
+
+            // createdBackImage.setAttribute("id",{})
 
             // Adding source of images
             createdBackImage.setAttribute("src",`../imgs/question mark.png`)
@@ -93,16 +90,43 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
             //Appending Base element to its parent
             document.getElementsByClassName("results")[0].appendChild(baseElement);
 
+            /******************************************************/
+
+            //getting a random number
             let rand = Math.floor(Math.random()*noOfElements.value)
 
+            //using random number as an order for flex sys
             baseElement.style.setProperty("order",`${rand}`)
+
+            /****************************************************/
+            //************  --Game Play Process--  **************/
+            /****************************************************/
+
+            createdBackImage.addEventListener("click", function(){
+
+                //rotating the element on click
+                rotatingImageContainer.style.setProperty("transform","rotatey(180deg)")
+        
+                //rotating the element on mouse leave
+                rotatingImageContainer.onmouseleave = function(){
+                    rotatingImageContainer.style.setProperty("transform","rotatey(360deg)")
+                }
+
+                imageName.push(this.parentElement.nextElementSibling.querySelector("img").getAttribute("src")) 
+                
+                
+                if(imageName[imageName.length-1] === imageName[imageName.length-2]){
+                    console.log(document.querySelector(`img [src= "../imgs/2.jpg"]`))
+
+                    
+                }
+                
+            })
+
         }
         
     }
-
     
-
-
     // deleting options
     this.remove()
     document.querySelector("h1").remove()
