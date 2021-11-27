@@ -111,13 +111,14 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
                 rotatingImageContainer.onmouseleave = function(){
                     rotatingImageContainer.style.setProperty("transform","rotatey(360deg)")
                 }
-
+                //Storing the source of image you clicked as last element in (imageName) Array
                 imageName.push(this.parentElement.nextElementSibling.querySelector("img").getAttribute("src")) 
                 
-                
+                //Checking if the Last element of the array equal to the element before it
                 if(imageName[imageName.length-1] === imageName[imageName.length-2]){
-                    console.log(document.querySelector(`img [src= "../imgs/2.jpg"]`))
-
+                    
+                    // Deleting container of two images that have source which fullfilled the condition i.e clicked twice in seccessive
+                    document.querySelectorAll(`img[src = '${imageName[imageName.length-1]}']`).forEach((a)=>a.parentElement.parentElement.remove())
                     
                 }
                 
