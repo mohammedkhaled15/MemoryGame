@@ -77,7 +77,7 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
             let createdImage1 = document.createElement("img");
             
             // Adding source of images
-            createdImage1.setAttribute("src",`../imgs/${i}.JPG`)
+            createdImage1.setAttribute("src",`../imgs/${i}.jpg`)
 
             // appending image to the its container
             createdImageCont1.append(createdImage1)
