@@ -49,7 +49,8 @@ form input[name = elements]{
     flex-direction:row;
     justify-content:center;
     align-items:center;
-    background-color:#ddd
+    background-color:#ddd;
+    height:fit-content;
 }
 .base{
     box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
@@ -100,6 +101,11 @@ form input[name = elements]{
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     overflow: hidden;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
 }
 .back-image{
     transform:rotatey(180deg);
@@ -107,7 +113,6 @@ form input[name = elements]{
     -moz-transform:rotatey(180deg);
     -ms-transform:rotatey(180deg);
     -o-transform:rotatey(180deg);
-    
 }
 img{
     width:100%;

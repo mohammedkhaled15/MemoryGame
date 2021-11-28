@@ -1,6 +1,13 @@
 //Set variables for input
 let noOfElements = document.querySelector("input[name = elements]");
 
+//Declaring function to use in adding multi attributes
+function setAttributes(el, attrs){
+    for(var key in attrs){
+        el.setAttribute(key,attrs[key])
+    }
+}
+
 //Main Event of Sumbiting our form and starting the game
 document.querySelectorAll("form")[0].onsubmit = function (e) {
     
@@ -17,9 +24,13 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
     //Deleting All Previous created divs and sections
     document.querySelectorAll("[class = box]").forEach((s) => s.remove());
     
-    //declaring array outside the next loop to use later in game processing at line 117
+    //Declaring variable used in adding "index" attribute to images
+    let k = 0
+
+    //declaring array outside the next loop to use later in game processing
     let imageName = []
-    
+    let indexOfImages = []
+
     //Main Loop for creating all elements and images inside them
     for (let i = 1; i <= (noOfElements.value / 2); i++) {
 
@@ -51,7 +62,7 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
             //Adding class
             unknownDiv.classList.add("card","front-image")
 
-            // creating Front Image
+            // creating Back Image
             let createdBackImage = document.createElement("img");
 
             // createdBackImage.setAttribute("id",{})
@@ -75,9 +86,9 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
 
             // creating BackImage
             let createdImage1 = document.createElement("img");
+
             
-            // Adding source of images
-            createdImage1.setAttribute("src",`../imgs/${i}.jpg`)
+            setAttributes(createdImage1,{"src":`../imgs/${i}.jpg`,"index":`${++k}`})
 
             // appending image to the its container
             createdImageCont1.append(createdImage1)
@@ -102,28 +113,36 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
             //************  --Game Play Process--  **************/
             /****************************************************/
 
-            createdBackImage.addEventListener("click", function(){
+            createdBackImage.addEventListener("click", function(e){
 
                 //rotating the element on click
                 rotatingImageContainer.style.setProperty("transform","rotatey(180deg)")
-        
+            
                 //rotating the element on mouse leave
-                rotatingImageContainer.onmouseleave = function(){
+                rotatingImageContainer.addEventListener("mouseleave" , function(){
                     rotatingImageContainer.style.setProperty("transform","rotatey(360deg)")
-                }
+                })
+
+                indexOfImages.push(this.parentElement.nextElementSibling.querySelector("img").getAttribute("index"))
+
                 //Storing the source of image you clicked as last element in (imageName) Array
                 imageName.push(this.parentElement.nextElementSibling.querySelector("img").getAttribute("src")) 
                 
                 //Checking if the Last element of the array equal to the element before it
-                if(imageName[imageName.length-1] === imageName[imageName.length-2]){
+                if(imageName.slice(-1)[0] === imageName.slice(-2)[0] && indexOfImages.slice(-1)[0] !== indexOfImages.slice(-2)[0]){
                     
-                    // Deleting container of two images that have source which fullfilled the condition i.e clicked twice in seccessive
-                    document.querySelectorAll(`img[src = '${imageName[imageName.length-1]}']`).forEach((a)=>a.parentElement.parentElement.remove())
+
+                setTimeout(function(){
+
+                // Deleting container of two images that have source which fullfilled the condition i.e clicked twice in seccessive
+                document.querySelectorAll(`img[src = '${imageName[imageName.length-1]}']`).forEach((a)=>a.parentElement.parentElement.style.cssText = "visibility: hidden; ")
+
+                },1000)    
+                
                     
                 }
                 
             })
-
         }
         
     }
@@ -133,3 +152,4 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
     document.querySelector("h1").remove()
     }
 };
+
