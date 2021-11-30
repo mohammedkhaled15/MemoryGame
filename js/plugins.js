@@ -68,7 +68,7 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
             // createdBackImage.setAttribute("id",{})
 
             // Adding source of images
-            createdBackImage.setAttribute("src",`/imgs/question mark.png`)
+            createdBackImage.setAttribute("src",`imgs/question mark.png`)
 
             // appending image to the its container
             unknownDiv.append(createdBackImage)
@@ -88,7 +88,7 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
             let createdImage1 = document.createElement("img");
 
             
-            setAttributes(createdImage1,{"src":`/imgs/${i}.jpg`,"index":`${++k}`})
+            setAttributes(createdImage1,{"src":`imgs/${i}.jpg`,"index":`${++k}`})
 
             // appending image to the its container
             createdImageCont1.append(createdImage1)
