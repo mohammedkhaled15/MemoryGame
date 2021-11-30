@@ -68,7 +68,7 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
             // createdBackImage.setAttribute("id",{})
 
             // Adding source of images
-            createdBackImage.setAttribute("src",`imgs/question-mark.png`)
+            createdBackImage.setAttribute("src",`imgs/question mark.png`)
 
             // appending image to the its container
             unknownDiv.append(createdBackImage)
