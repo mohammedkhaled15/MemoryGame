@@ -1,4 +1,4 @@
-٩//Set variables for input
+//Set variables for input
 let noOfElements = document.querySelector("input[name = elements]");
 
 //Declaring function to use in adding multi attributes
