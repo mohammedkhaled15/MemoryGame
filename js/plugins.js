@@ -1,4 +1,4 @@
-//Set variables for input
+٩//Set variables for input
 let noOfElements = document.querySelector("input[name = elements]");
 
 //Declaring function to use in adding multi attributes
@@ -68,7 +68,7 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
             // createdBackImage.setAttribute("id",{})
 
             // Adding source of images
-            createdBackImage.setAttribute("src",`imgs/question mark.png`)
+            createdBackImage.setAttribute("src",`imgs/question-mark.png`)
 
             // appending image to the its container
             unknownDiv.append(createdBackImage)
