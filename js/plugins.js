@@ -62,10 +62,8 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
             //Adding class
             unknownDiv.classList.add("card","front-image")
 
-            // creating Back Image
+            // creating Front Image
             let createdBackImage = document.createElement("img");
-
-            // createdBackImage.setAttribute("id",{})
 
             // Adding source of images
             createdBackImage.setAttribute("src",`imgs/question mark.png`)
@@ -98,8 +96,12 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
 
             /******************************************************/
 
+            
+            // Changing the display of the results container
+            document.getElementById("results").style.display = "grid"
+
             //Appending Base element to its parent
-            document.getElementsByClassName("results")[0].appendChild(baseElement);
+            document.getElementById("results").appendChild(baseElement);
 
             /******************************************************/
 
@@ -139,7 +141,6 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
 
                 },1000)    
                 
-                    
                 }
                 
             })
@@ -147,9 +148,8 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
         
     }
     
-    // deleting options
-    this.remove()
-    document.querySelector("h1").remove()
+    // deleting welcome Page
+    document.getElementById("welcome").remove()
     }
 };
 
