@@ -1,5 +1,4 @@
-//Set variables for input
-let noOfElements = document.querySelector("input[name = elements]");
+
 
 //Declaring function to use in adding multi attributes
 function setAttributes(el, attrs){
@@ -8,18 +7,28 @@ function setAttributes(el, attrs){
     }
 }
 
+// let scoreList = {}
+
 //Main Event of Sumbiting our form and starting the game
-document.querySelectorAll("form")[0].onsubmit = function (e) {
+document.querySelector("button").addEventListener("click", function (e) {
     
-    //Preventing default of sumbiting button
-    e.preventDefault();
+    // let userName  = document.querySelector("input[name=username]").value
 
-    //Validating Input
-    if(noOfElements.value<1||noOfElements.value === 0||noOfElements.value %2 !== 0||noOfElements.value<4||noOfElements.value===""){
+    // scoreList[userName] = noOfElements.value
 
-        alert("Please Enter an Even No between 4 and 30")
+    // let scoreListJson = JSON.stringify(scoreList)
 
-    }else{
+    // console.log(scoreListJson)
+
+    // let fs = require("fs")
+
+    // fs.writeFileSync("../main.json",scoreListJson,"utf-8",function(err){
+    //     if (err) throw err;
+    //     console.log("saved")
+    // })
+
+    //Set variables for input
+    let noOfElements = document.querySelector("input[name=elements]:checked");
 
     //Deleting All Previous created divs and sections
     document.querySelectorAll("[class = box]").forEach((s) => s.remove());
@@ -139,7 +148,7 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
                 // Deleting container of two images that have source which fullfilled the condition i.e clicked twice in seccessive
                 document.querySelectorAll(`img[src = '${imageName[imageName.length-1]}']`).forEach((a)=>a.parentElement.parentElement.style.cssText = "visibility: hidden; ")
 
-                },1000)    
+                },700)    
                 
                 }
                 
@@ -150,6 +159,6 @@ document.querySelectorAll("form")[0].onsubmit = function (e) {
     
     // deleting welcome Page
     document.getElementById("welcome").remove()
-    }
-};
+    document.getElementById("welcome-back").remove()
+});
 
