@@ -20,20 +20,25 @@
         
             <input type="text" name="username" class="input" placeholder="Your name">
             <div class="difficulty">
+                <input type="radio" name="elements" checked value= "2" id="easy">
                 <label for="easy" class="input"> Easy</label>
-                <input type="radio" name="elements"  value= "8" id="easy">
-                <label for="medium" class="input"> medium</label>
                 <input type="radio" name="elements" value= "20" id="medium">
-                <label for="hard" class="input"> hard</label>
+                <label for="medium" class="input"> medium</label>
                 <input type="radio" name="elements" value= "30" id="hard">
+                <label for="hard" class="input"> hard</label>
             </div>
-            <button>Start The Game</button>
+            <button id="start">Start The Game</button>
     </div>
-    <div class="results" id="results">
-        
+    <div class="score-board">
+        <div class="score"><span class="min">00</span>:<span class="sec">00</span></div>
+        <button id="finish">Click Me When You Finish</button>
+    </div>
+    <div class="results" id="results"></div>
+
+    <div id="winner">
+        <h1>Well Done! <span id="player-name">Mohammed</span>You made it in Just <span id="time">2:00</span> </h1>
     </div>
     <!-- main script file -->
-    <!-- <script src="main.json"></script> -->
 <script src="js/plugins.js"></script>
 </body>
 </html>

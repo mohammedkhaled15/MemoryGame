@@ -84,7 +84,7 @@ h1,h4 {
     -o-border-radius: 8px;
     text-align: center;
 }
-button{
+#start{
     border: none;
     padding: 10px 25px;
     font-size: 1.5rem;
@@ -100,23 +100,16 @@ button{
 }
 
 .results {
+  padding: 20px;
   display: none;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-  background-color: #ddd;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 5px;
   height: 100vh;
 }
 .base {
-  box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
-    5px 5px 15px rgba(0, 0, 0, 0.3),
-    inset -5px -5px 15px rgba(255, 255, 255, 0.1),
-    inset 5px 5px 5px rgba(0, 0, 0, 0.2);
-  height: 170px;
-  width: 170px;
-  margin: 3%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ddd;
   color: white;
   border-radius: 12px;
   -webkit-border-radius: 12px;
@@ -167,4 +160,55 @@ button{
 img:not(.welcome) {
   width: 100%;
   height: 100%;
+}
+.score{
+  margin: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: red;
+  font-weight: bold;
+}
+#finish{
+  border: none;
+  padding: 10px 25px;
+  font-size: 1.5rem;
+  background-color: royalblue;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  box-shadow: 10px 10px 10px #666;
+  cursor: pointer;
+  margin: 10px;
+}
+.score-board{
+  text-align: center;
+}
+#winner{
+  position: absolute;
+  display: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
+  width: 300px;
+  padding: 20px;
+}
+#winner span{
+  color: rgb(20, 56, 48);
+}
+
+#winner:after{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  background-color:rgba(255, 255, 255, 0.6);
+  top: -65%;
+  left: -125%;
+  z-index: -1;
 }

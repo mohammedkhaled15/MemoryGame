@@ -7,26 +7,63 @@ function setAttributes(el, attrs){
     }
 }
 
-// let scoreList = {}
+// Declaring function to start timer
+function startTimer() {
 
-//Main Event of Sumbiting our form and starting the game
+    // Declaring variables for min and sec
+    let sec = document.querySelector(".score .sec");
+    let min = document.querySelector(".score .min");
+
+    // Making function that will excute every 1000 mille seconds
+    const timer = setInterval(function(){
+
+        // Increasing content of sec span by one
+        sec.textContent++;
+
+        // Check for the sec to add 0 beside all numbers < 10
+    if (sec.textContent <= 9) {
+        sec.textContent = `0${sec.textContent}`;
+
+        // Checking when the sec will equal to 59 to convert to 00 and increase min by one
+    } else if (sec.textContent == 59) {
+
+        // Converting sec to 00
+        sec.textContent = `00`;
+
+        // Increasing min by one
+        min.textContent++;
+
+        // Adding 0 to all numbers < 10
+        if (min.textContent <= 9) {
+            min.textContent = `0${min.textContent}`;
+        }
+    }
+    },1000)    
+
+    document.getElementById("finish").addEventListener("click",function(){
+        if(!document.getElementById("results").contains(document.querySelectorAll(".main-rotating-div")[0])){
+            clearInterval(timer)
+            // document.querySelector("#winner span:first-child").textContent = `${userName}`;
+            console.log(userName)
+            document.querySelector("#winner span:last-child").textContent = `${min.textContent}:${sec.textContent}`;
+            document.getElementById("winner").style.display = "block"
+        }else{
+            console.log("waaaaaaaiiiiiit")
+        }
+    })
+}
+
+//Main Event of clicking our button and starting the game
 document.querySelector("button").addEventListener("click", function (e) {
     
-    // let userName  = document.querySelector("input[name=username]").value
+    // launching the timer
+    startTimer()
 
-    // scoreList[userName] = noOfElements.value
+    var userName  = document.querySelector("input[name=username]").value
+    
+    localStorage.setItem(userName,"00:00")
 
-    // let scoreListJson = JSON.stringify(scoreList)
-
-    // console.log(scoreListJson)
-
-    // let fs = require("fs")
-
-    // fs.writeFileSync("../main.json",scoreListJson,"utf-8",function(err){
-    //     if (err) throw err;
-    //     console.log("saved")
-    // })
-
+    
     //Set variables for input
     let noOfElements = document.querySelector("input[name=elements]:checked");
 
@@ -141,24 +178,36 @@ document.querySelector("button").addEventListener("click", function (e) {
                 
                 //Checking if the Last element of the array equal to the element before it
                 if(imageName.slice(-1)[0] === imageName.slice(-2)[0] && indexOfImages.slice(-1)[0] !== indexOfImages.slice(-2)[0]){
-                    
 
                 setTimeout(function(){
 
                 // Deleting container of two images that have source which fullfilled the condition i.e clicked twice in seccessive
-                document.querySelectorAll(`img[src = '${imageName[imageName.length-1]}']`).forEach((a)=>a.parentElement.parentElement.style.cssText = "visibility: hidden; ")
+                // document.querySelectorAll(`img[src = '${imageName[imageName.length-1]}']`).forEach((a)=>a.parentElement.parentElement.style.cssText = "display: none; visibility:hidden")
+                document.querySelectorAll(`img[src = '${imageName[imageName.length-1]}']`).forEach((a)=>a.parentElement.parentElement.remove())
 
-                },700)    
+                },600)    
                 
                 }
+                
+
                 
             })
         }
         
     }
     
+
     // deleting welcome Page
     document.getElementById("welcome").remove()
     document.getElementById("welcome-back").remove()
+
 });
+
+
+
+// if(document.getElementById("results").contains(rotatingImageContainer)){
+//     clearInterval(timer)
+// }
+
+
 
