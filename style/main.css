@@ -286,18 +286,11 @@ img:not(.welcome) {
 }  
 }
 
-footer{
-  position: absolute;
-  bottom: 5px;
+.welcome footer{
   z-index: 20;
-  left: 50%;
+  margin-top: 50px;
   font-weight: bold;
   font-size: 0.8rem;
   letter-spacing: 2px;
-  transform: translatex(-50%);
-  -webkit-transform: translatex(-50%);
-  -moz-transform: translatex(-50%);
-  -ms-transform: translatex(-50%);
-  -o-transform: translatex(-50%);
   text-align: center;
 }
