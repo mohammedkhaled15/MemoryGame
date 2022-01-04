@@ -105,13 +105,37 @@ img {
 }
 
 .results {
-  padding: 20px;
+  padding-top: 100px;
   display: none;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  gap: 5px;
-  height: 100vh;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  column-gap: 5px;
+  height: 50vh;
+  align-items: flex-start;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  gap: 8px; */
+}
+@media(max-width:992px){
+  .results{
+    height: 80vh;
+  }
+}
+@media(max-width:767px){
+  .results{
+    height: 100vh;
+  }
+}
+@media(max-width:400px){
+  .results{
+    height: 130vh;
+  }
 }
 .base {
+  /* width: 25%; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -142,7 +166,7 @@ img {
   position: absolute;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  background-color: rgb(25, 25, 48);
+  background:linear-gradient(black, gray, black);
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -195,6 +219,7 @@ img:not(.welcome) {
   display: none;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   background-color: rgba(57, 99, 114, 0.6);
   left: 50%;
   top: 50%;
@@ -210,10 +235,12 @@ img:not(.welcome) {
   color: rgb(20, 56, 48);
 }
 #winner h1{
-  background: linear-gradient(white, blue);
+  background: linear-gradient(white, rgb(35, 35, 37));
   width: fit-content;
   height: fit-content;
+  text-align: center;
   padding: 15px;
+  letter-spacing: 1.5px;
   border-radius: 15px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -222,19 +249,20 @@ img:not(.welcome) {
   box-shadow: 10px 10px 10px #666;
   margin: 20px;
 }
-/* body{
-  position: relative;
-} */
-/* #winner:after{
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  content: "";
-  background:linear-gradient(blue,black);
-  top: 0;
-  left: 0;
-  z-index: -1;
-} */
+#winner button{
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  padding: 10px;
+  background-color: #666;
+  color: darkblue;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 10px 10px 10px #666;
+  margin-top: 100px;
+}
 @keyframes enlarge {
   0%{
     transform: scale(0);

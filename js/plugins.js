@@ -1,5 +1,5 @@
 // Declaring variables
-var username, scoreTime;
+var username, scoreTime, startSound, winningSound, wrongSound;
 
 //Declaring function to use in adding multi attributes
 function setAttributes(el, attrs){
@@ -53,8 +53,19 @@ function startTimer() {
             // Storing the value of your score
             scoreTime = document.querySelector(".score").textContent
 
-            // Adding text content to the #winner div showing the username and the score 
-            document.querySelector("#winner").innerHTML = `<h1>Well Done! <span>${username}</span> You made it in Just <span>${scoreTime}</span> </h1>`
+            // Adding text content to the #winner div showing the username and the score also adding button to use it in reloading the page
+            document.querySelector("#winner").innerHTML = `<h1>Well Done! <span>${username}</span> You made it in Just <span>${scoreTime}</span> </h1><button>Restart The Game</button>`
+
+            // Declaring Sound of winning
+            winningSound = new Audio("../sounds/Deck-the-halls-jingle.mp3")
+
+            // Playing the sound
+            winningSound.play()
+
+            // Adding event to the button to reload the page and restart the game
+            document.querySelector("#winner button").addEventListener("click", function(){
+                document.location.reload()
+            })
 
             // Adding animaion to the score div 
             document.querySelector(".score").style.animation = "enlarge 4s linear forwards"
@@ -68,15 +79,21 @@ function startTimer() {
         }else{
             
             // Adding text content to the #winner div showing the username and the score 
-            document.querySelector("#winner").innerHTML = `<h1 style="color:red">Searching for Bugs or Want to Cheat?? Go and Finsh your cards first!</h1>`
+            document.querySelector("#winner").innerHTML = `<h1 style="color:red; letter-spacing:2.5px">Searching for Bugs or Want to Cheat ?? Go and Finsh your cards first!</h1>`
 
             // Changing the appearance of the winner banner
             document.getElementById("winner").style.display = "flex"
+
+            // Declaring new sound
+            wrongSound = new Audio("../sounds/Game-show-wrong-answer-sound.mp3")
+
+            // Playing the sound
+            wrongSound.play()
             
             // Making the banner disapear after 5 sec to continue the game
             setTimeout(function(){
                 document.getElementById("winner").style.display = "none"
-            },5000)
+            },6000)
         }
     })
 }
@@ -87,12 +104,22 @@ document.querySelector("button").addEventListener("click", function (e) {
     // launching the timer
     startTimer()
 
+    startSound = new Audio("../sounds/Card-flip-sound-effect.mp3")
+
+    startSound.play()
+
     // Initializing the value of username with the input from the client
     username  = document.querySelector("input[name=username]").value
 
-    
     //Set variables for input
     let noOfElements = document.querySelector("input[name=elements]:checked");
+
+    // Changing height of container according to number of cards
+    if(noOfElements.value == 10){
+        document.querySelector(".results").style.height = "70vh"
+    }else if (noOfElements.value == 20){
+        document.getElementById("results").style.height = "100vh"
+    }
 
     //Deleting All Previous created divs and sections
     document.querySelectorAll("[class = box]").forEach((s) => s.remove());

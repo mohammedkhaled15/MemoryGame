@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style/main.css">
 </head>
 <body>
+    <audio src="sounds/Card-flip-sound-effect.mp3" id="startsound"></audio>
     <img src="imgs/background.png" class="welcome" id="welcome-back" alt="">
     <div class="welcome" id="welcome">
         <h1>Memory Cards Game</h1>
@@ -20,12 +21,12 @@
         
             <input type="text" name="username" class="input" placeholder="Your name">
             <div class="difficulty">
-                <input type="radio" name="elements" checked value= "2" id="easy">
+                <input type="radio" name="elements" checked value= "10" id="easy">
                 <label for="easy" class="input"> Easy</label>
                 <input type="radio" name="elements" value= "20" id="medium">
-                <label for="medium" class="input"> medium</label>
+                <label for="medium" class="input"> Medium</label>
                 <input type="radio" name="elements" value= "30" id="hard">
-                <label for="hard" class="input"> hard</label>
+                <label for="hard" class="input"> Hard</label>
             </div>
             <button id="start">Start The Game</button>
     </div>
