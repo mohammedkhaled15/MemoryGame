@@ -1,4 +1,5 @@
-
+// Declaring variables
+var username, scoreTime;
 
 //Declaring function to use in adding multi attributes
 function setAttributes(el, attrs){
@@ -40,15 +41,42 @@ function startTimer() {
     }
     },1000)    
 
+    // Adding event to button when you finish you have to press it.
     document.getElementById("finish").addEventListener("click",function(){
+
+        // Check if the cards all finished or not
         if(!document.getElementById("results").contains(document.querySelectorAll(".main-rotating-div")[0])){
-            clearInterval(timer)
-            // document.querySelector("#winner span:first-child").textContent = `${userName}`;
-            console.log(userName)
-            document.querySelector("#winner span:last-child").textContent = `${min.textContent}:${sec.textContent}`;
-            document.getElementById("winner").style.display = "block"
+
+            clearInterval(timer) // Stop the time
+
+            this.remove()
+            // Storing the value of your score
+            scoreTime = document.querySelector(".score").textContent
+
+            // Adding text content to the #winner div showing the username and the score 
+            document.querySelector("#winner").innerHTML = `<h1>Well Done! <span>${username}</span> You made it in Just <span>${scoreTime}</span> </h1>`
+
+            // Adding animaion to the score div 
+            document.querySelector(".score").style.animation = "enlarge 4s linear forwards"
+
+            // Changing the appearance of the winner banner
+            document.getElementById("winner").style.display = "flex"
+
+            // Storing the value in local storage 
+            localStorage.setItem(username,scoreTime)
+
         }else{
-            console.log("waaaaaaaiiiiiit")
+            
+            // Adding text content to the #winner div showing the username and the score 
+            document.querySelector("#winner").innerHTML = `<h1 style="color:red">Searching for Bugs or Want to Cheat?? Go and Finsh your cards first!</h1>`
+
+            // Changing the appearance of the winner banner
+            document.getElementById("winner").style.display = "flex"
+            
+            // Making the banner disapear after 5 sec to continue the game
+            setTimeout(function(){
+                document.getElementById("winner").style.display = "none"
+            },5000)
         }
     })
 }
@@ -59,9 +87,8 @@ document.querySelector("button").addEventListener("click", function (e) {
     // launching the timer
     startTimer()
 
-    var userName  = document.querySelector("input[name=username]").value
-    
-    localStorage.setItem(userName,"00:00")
+    // Initializing the value of username with the input from the client
+    username  = document.querySelector("input[name=username]").value
 
     
     //Set variables for input
@@ -131,7 +158,7 @@ document.querySelector("button").addEventListener("click", function (e) {
             // creating BackImage
             let createdImage1 = document.createElement("img");
 
-            
+            // Adding indexis and images sources to each img
             setAttributes(createdImage1,{"src":`imgs/${i}.jpg`,"index":`${++k}`})
 
             // appending image to the its container
@@ -142,7 +169,6 @@ document.querySelector("button").addEventListener("click", function (e) {
 
             /******************************************************/
 
-            
             // Changing the display of the results container
             document.getElementById("results").style.display = "grid"
 
@@ -171,6 +197,7 @@ document.querySelector("button").addEventListener("click", function (e) {
                     rotatingImageContainer.style.setProperty("transform","rotatey(360deg)")
                 })
 
+                // saving the index of the clicked image in the array indexOFImages
                 indexOfImages.push(this.parentElement.nextElementSibling.querySelector("img").getAttribute("index"))
 
                 //Storing the source of image you clicked as last element in (imageName) Array
@@ -179,35 +206,19 @@ document.querySelector("button").addEventListener("click", function (e) {
                 //Checking if the Last element of the array equal to the element before it
                 if(imageName.slice(-1)[0] === imageName.slice(-2)[0] && indexOfImages.slice(-1)[0] !== indexOfImages.slice(-2)[0]){
 
+                // Using setTimeout function to make a delay before deleing the element    
                 setTimeout(function(){
 
                 // Deleting container of two images that have source which fullfilled the condition i.e clicked twice in seccessive
-                // document.querySelectorAll(`img[src = '${imageName[imageName.length-1]}']`).forEach((a)=>a.parentElement.parentElement.style.cssText = "display: none; visibility:hidden")
                 document.querySelectorAll(`img[src = '${imageName[imageName.length-1]}']`).forEach((a)=>a.parentElement.parentElement.remove())
 
                 },600)    
                 
                 }
-                
-
-                
             })
         }
-        
     }
-    
-
     // deleting welcome Page
     document.getElementById("welcome").remove()
     document.getElementById("welcome-back").remove()
-
 });
-
-
-
-// if(document.getElementById("results").contains(rotatingImageContainer)){
-//     clearInterval(timer)
-// }
-
-
-

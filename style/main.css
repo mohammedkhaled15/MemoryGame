@@ -35,7 +35,7 @@ img {
   z-index: -1;
   background-color: rgba(255, 255, 255, 0.6)
 }
-h1,h4 {
+#welcome h1, #welcome h4 {
   letter-spacing: 1.8px;
   font-size: 2.8rem;
     text-align: center;
@@ -55,8 +55,13 @@ h1,h4 {
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
 }
+@media(max-width:767px){
+  #welcome h1, #welcome h4{
+    font-size: 1.5rem;
+  }
+}
 .welcome .input[name=username]{
-    width: 30%;
+    width: 40%;
     height: 35px;
     border: none;
     padding: 10px;
@@ -188,6 +193,9 @@ img:not(.welcome) {
 #winner{
   position: absolute;
   display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(57, 99, 114, 0.6);
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
@@ -195,20 +203,53 @@ img:not(.welcome) {
   -moz-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   -o-transform: translate(-50%,-50%);
-  width: 300px;
-  padding: 20px;
+  width: 100vw;
+  height: 100vh;
 }
 #winner span{
   color: rgb(20, 56, 48);
 }
-
-#winner:after{
+#winner h1{
+  background: linear-gradient(white, blue);
+  width: fit-content;
+  height: fit-content;
+  padding: 15px;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  box-shadow: 10px 10px 10px #666;
+  margin: 20px;
+}
+/* body{
+  position: relative;
+} */
+/* #winner:after{
   position: absolute;
   width: 100vw;
   height: 100vh;
   content: "";
-  background-color:rgba(255, 255, 255, 0.6);
-  top: -65%;
-  left: -125%;
+  background:linear-gradient(blue,black);
+  top: 0;
+  left: 0;
   z-index: -1;
+} */
+@keyframes enlarge {
+  0%{
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+  }
+  100%{
+    transform: scale(40);
+    -webkit-transform: scale(40);
+    -moz-transform: scale(40);
+    -ms-transform: scale(40);
+    -o-transform: scale(40);
+    transform-origin: top;
+    visibility: hidden;
+}  
 }
