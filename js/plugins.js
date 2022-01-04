@@ -90,7 +90,7 @@ function startTimer() {
             document.getElementById("winner").style.display = "flex"
 
             // Declaring new sound
-            wrongSound = new Audio("../sounds/Game-show-wrong-answer-sound.mp3")
+            wrongSound = new Audio("https://raw.githubusercontent.com/mohammedkhaled15/MemoryGame/sounds/Game-show-wrong-answer-sound.mp3")
 
             // Playing the sound
             wrongSound.play()
