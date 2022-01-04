@@ -49,13 +49,18 @@ function startTimer() {
 
             clearInterval(timer) // Stop the time
 
+            // Removing timer after finishing game
             this.remove()
+
             // Storing the value of your score
             scoreTime = document.querySelector(".score").textContent
 
             // Adding text content to the #winner div showing the username and the score also adding button to use it in reloading the page
             document.querySelector("#winner").innerHTML = `<h1>Well Done! <span>${username}</span> You made it in Just <span>${scoreTime}</span> </h1><button>Restart The Game</button>`
 
+            // storing your data in session storage
+            sessionStorage.setItem(username,scoreTime)
+            
             // Declaring Sound of winning
             winningSound = new Audio("../sounds/Deck-the-halls-jingle.mp3")
 
@@ -93,7 +98,7 @@ function startTimer() {
             // Making the banner disapear after 5 sec to continue the game
             setTimeout(function(){
                 document.getElementById("winner").style.display = "none"
-            },6000)
+            },5500)
         }
     })
 }
